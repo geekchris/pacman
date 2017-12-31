@@ -26,7 +26,6 @@ public class HomeActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         pacView = new PacView(this);
         setContentView(pacView);
-
     }
     @Override
     protected void onResume() {
