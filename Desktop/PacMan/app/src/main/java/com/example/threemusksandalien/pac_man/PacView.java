@@ -5,16 +5,24 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+<<<<<<< HEAD
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+=======
+import android.graphics.Rect;
+import android.graphics.RectF;
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+<<<<<<< HEAD
 import android.widget.ImageView;
+=======
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
 
 /**
  * Created by squar on 1/6/2018.
@@ -29,7 +37,11 @@ public class PacView extends SurfaceView implements Runnable {
     private boolean isMoving;
     private float runSpeedperSecond = 1000;
     private float manXPos = 10, manYPos = 10;
+<<<<<<< HEAD
     private int frameWidth = 60, frameHeight = 60;
+=======
+    private int frameWidth = 30, frameHeight = 30;
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
     private int frameCount = 3;
     private int currentFrame = 0;
     private long fps;
@@ -40,11 +52,18 @@ public class PacView extends SurfaceView implements Runnable {
     private int frameLengthInMilliSecond = 50;
     private Rect frameToDraw = new Rect(0, 0, frameWidth, frameHeight);
     private RectF whereToDraw = new RectF(manXPos, manYPos, manXPos + frameWidth, frameHeight);
+<<<<<<< HEAD
     public PacView(Context mContext, AttributeSet set) {
         super(mContext, set);
         setZOrderOnTop(true);
         ourHolder = getHolder();
         ourHolder.setFormat(PixelFormat.TRANSPARENT);
+=======
+
+    public PacView(Context mContext) {
+        super(mContext);
+        ourHolder = getHolder();
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
         pacAnimation = BitmapFactory.decodeResource(getResources(), R.drawable.pacman2);
         dir = 0;
         isMoving = !isMoving;
@@ -70,6 +89,7 @@ public class PacView extends SurfaceView implements Runnable {
 
     public void update() {
         if (isMoving) {
+<<<<<<< HEAD
             if(dir == 0) manXPos += 7;
             else if(dir == 1) manXPos -=7;
             else if(dir == 2) manYPos -=7;
@@ -77,6 +97,17 @@ public class PacView extends SurfaceView implements Runnable {
             if (manXPos > getWidth()) {
             }
             if (manYPos + frameHeight > getHeight()) {
+=======
+            if(dir == 0) manXPos += 5;
+            else if(dir == 1) manXPos -=5;
+            else if(dir == 2) manYPos -=5;
+            else if(dir == 3) manYPos +=5;
+            if (manXPos > getWidth()) {
+
+            }
+            if (manYPos + frameHeight > getHeight()) {
+
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
             }
             else{
 
@@ -97,15 +128,24 @@ public class PacView extends SurfaceView implements Runnable {
                 }
             }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
         frameToDraw.left = currentFrame * frameWidth;
         frameToDraw.right = frameToDraw.left + frameWidth;
     }
 
     public void draw() {
         if (ourHolder.getSurface().isValid()) {
+<<<<<<< HEAD
 
             canvas = ourHolder.lockCanvas();
             canvas.drawColor(0, android.graphics.PorterDuff.Mode.CLEAR);
+=======
+            canvas = ourHolder.lockCanvas();
+            canvas.drawColor(Color.BLACK);
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
             whereToDraw.set((int) manXPos, (int) manYPos, (int) manXPos
                     + frameWidth, (int) manYPos + frameHeight);
             manageCurrentFrame();
@@ -199,4 +239,29 @@ public class PacView extends SurfaceView implements Runnable {
 
         return true;
     }*/
+<<<<<<< HEAD
+=======
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        System.out.println("wow");
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_D:
+                dir = 0;
+                System.out.println("hi");
+                return true;
+            case KeyEvent.KEYCODE_A:
+                dir = 1;
+                return true;
+            case KeyEvent.KEYCODE_W:
+                dir = 2;
+                return true;
+            case KeyEvent.KEYCODE_S:
+                dir = 3;
+                return true;
+            default:
+                return super.onKeyUp(keyCode, event);
+        }
+    }
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
 }

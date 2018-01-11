@@ -7,25 +7,37 @@ import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+<<<<<<< HEAD
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
 import android.widget.ImageView;
+=======
+import android.view.Window;
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
 import android.widget.Toast;
 
 public class HomeActivity extends Activity implements GestureDetector.OnGestureListener{
     private PacView pacView;
+<<<<<<< HEAD
     private BoardView boardView;
+=======
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
     private MediaPlayer musicPlayer;
     private GestureDetectorCompat gestureDetector;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+<<<<<<< HEAD
         setContentView(R.layout.activity_home);
         pacView = findViewById(R.id.pacView);
         //boardView = new BoardView(this);
 
+=======
+        pacView = new PacView(this);
+        setContentView(pacView);
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
         //musicPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.pacman_beginning);
         //musicPlayer.start();
         musicPlayer = MediaPlayer.create(getApplicationContext(), R.raw.pacman_beginning);
@@ -41,7 +53,10 @@ public class HomeActivity extends Activity implements GestureDetector.OnGestureL
         musicPlayer.start();
         musicPlayer.setLooping(true);
         this.gestureDetector = new GestureDetectorCompat(this,this);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
     }
     @Override
     protected void onResume() {
@@ -51,7 +66,10 @@ public class HomeActivity extends Activity implements GestureDetector.OnGestureL
     @Override
     protected void onPause() {
         super.onPause();
+<<<<<<< HEAD
         pacView.pause();
+=======
+>>>>>>> 3cee88926b69f956234c6dccbc9a5081d29052b0
     }
 
     @Override
