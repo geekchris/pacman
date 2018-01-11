@@ -29,7 +29,7 @@ public class PacView extends SurfaceView implements Runnable {
     private boolean isMoving;
     private float runSpeedperSecond = 1000;
     private float manXPos = 10, manYPos = 10;
-    private int frameWidth = 45, frameHeight = 45;
+    private int frameWidth = 60, frameHeight = 60;
     private int frameCount = 3;
     private int currentFrame = 0;
     private long fps;
@@ -42,6 +42,7 @@ public class PacView extends SurfaceView implements Runnable {
     private RectF whereToDraw = new RectF(manXPos, manYPos, manXPos + frameWidth, frameHeight);
     public PacView(Context mContext, AttributeSet set) {
         super(mContext, set);
+        setZOrderOnTop(true);
         ourHolder = getHolder();
         ourHolder.setFormat(PixelFormat.TRANSPARENT);
         pacAnimation = BitmapFactory.decodeResource(getResources(), R.drawable.pacman2);
@@ -52,7 +53,6 @@ public class PacView extends SurfaceView implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("thread running");
         while (playing) {
             long startFrameTime = System.currentTimeMillis();
             update();
@@ -70,10 +70,10 @@ public class PacView extends SurfaceView implements Runnable {
 
     public void update() {
         if (isMoving) {
-            if(dir == 0) manXPos += 5;
-            else if(dir == 1) manXPos -=5;
-            else if(dir == 2) manYPos -=5;
-            else if(dir == 3) manYPos +=5;
+            if(dir == 0) manXPos += 7;
+            else if(dir == 1) manXPos -=7;
+            else if(dir == 2) manYPos -=7;
+            else if(dir == 3) manYPos +=7;
             if (manXPos > getWidth()) {
             }
             if (manYPos + frameHeight > getHeight()) {
@@ -102,12 +102,10 @@ public class PacView extends SurfaceView implements Runnable {
     }
 
     public void draw() {
-        System.out.println("ourholder" + ourHolder.toString() + " " + ourHolder.getSurfaceFrame());
-        System.out.println("wheretoprint" + whereToDraw.toString() );
         if (ourHolder.getSurface().isValid()) {
 
             canvas = ourHolder.lockCanvas();
-            canvas.drawColor(Color.BLACK);
+            canvas.drawColor(0, android.graphics.PorterDuff.Mode.CLEAR);
             whereToDraw.set((int) manXPos, (int) manYPos, (int) manXPos
                     + frameWidth, (int) manYPos + frameHeight);
             manageCurrentFrame();
